@@ -7,21 +7,19 @@ const Button = ({
   customClass,
   fontSize,
   onPress,
-}) => {
-  return (
-    <TouchableOpacity
-      style={[
-        styles.container,
-        { backgroundColor: background, ...customClass },
-      ]}
-      onPress={() => onPress(content)}
-    >
-      <Text style={[styles.btnText, { color: color, fontSize: fontSize }]}>
-        {content}
-      </Text>
-    </TouchableOpacity>
-  );
-};
+}) => (
+  <TouchableOpacity
+    style={[styles.container, { backgroundColor: background, ...customClass }]}
+    onPress={() => {
+      playSound();
+      onPress(content);
+    }}
+  >
+    <Text style={[styles.btnText, { color: color, fontSize: fontSize }]}>
+      {content}
+    </Text>
+  </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
   container: {

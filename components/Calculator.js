@@ -53,8 +53,6 @@ const Calculator = () => {
     }
   };
 
-  console.log(result);
-
   return (
     <View
       style={[
