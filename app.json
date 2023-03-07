@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "EasyCalc",
+    "slug": "easycalc",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/calculator.png",
+    "userInterfaceStyle": "auto",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/calculator.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.ranaintizar.easycalc"
+    },
+    "web": {
+      "favicon": "./assets/calculator.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7ed81443-ec0e-456b-92b6-7ce4dc8b2824"
+      }
+    },
+    "owner": "ranaintizar"
+  }
+}
