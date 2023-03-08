@@ -10,10 +10,7 @@ const Button = ({
 }) => (
   <TouchableOpacity
     style={[styles.container, { backgroundColor: background, ...customClass }]}
-    onPress={() => {
-      playSound();
-      onPress(content);
-    }}
+    onPress={() => onPress(content)}
   >
     <Text style={[styles.btnText, { color: color, fontSize: fontSize }]}>
       {content}

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, View, Text, useColorScheme } from "react-native";
+import { useState } from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Button from "./Button";
 import ToggleBtn from "./ToggleBtn";
@@ -7,12 +7,7 @@ import ToggleBtn from "./ToggleBtn";
 const Calculator = () => {
   const [statement, setStatement] = useState([]);
   const [result, setResult] = useState(null);
-  // const [sysTheme, setSysTheme] = useState();
   const [theme, setTheme] = useState("light");
-
-  // const colorScheme = useColorScheme();
-
-  // useEffect(() => setSysTheme(colorScheme), [colorScheme]);
 
   const row1 = ["C", "x²", "%"];
   const row2 = ["1", "2", "3"];
@@ -40,11 +35,13 @@ const Calculator = () => {
     } else if (val === "x²") {
       let num = statement.join("");
       const result = Math.pow(Number(num), 2);
-      setResult("=" + " " + result);
+      let formattedAnswer = parseFloat(result.toFixed(4));
+      setResult(formattedAnswer);
     } else if (val === "=") {
       let str = statement.join("");
       let result = eval(str);
-      setResult("=" + " " + result);
+      let formattedAnswer = parseFloat(result.toFixed(4));
+      setResult(formattedAnswer);
     } else {
       if (val === "_") {
         val = "-";
@@ -62,22 +59,36 @@ const Calculator = () => {
     >
       <ToggleBtn theme={theme} setTheme={setTheme} />
       <View style={styles.calculation}>
-        <Text
-          style={[
-            styles.operation,
-            { color: theme === "light" ? "#0006" : "#ccc" },
-          ]}
+        <ScrollView
+          style={{
+            width: "100%",
+            marginTop: 75,
+            marginBottom: 5,
+          }}
+          contentContainerStyle={{
+            alignItems: "flex-end",
+            paddingTop: 10,
+          }}
         >
-          {statement}
-        </Text>
-        <Text
-          style={[
-            styles.result,
-            { color: theme === "light" ? "#000" : "#fff" },
-          ]}
-        >
-          {result}
-        </Text>
+          <Text
+            style={[
+              styles.operation,
+              { color: theme === "light" ? "#0006" : "#ccc" },
+            ]}
+          >
+            {statement}
+          </Text>
+        </ScrollView>
+        <ScrollView style={{ maxHeight: 80 }}>
+          <Text
+            style={[
+              styles.result,
+              { color: theme === "light" ? "#000" : "#fff", lineHeight: 65 },
+            ]}
+          >
+            {result}
+          </Text>
+        </ScrollView>
       </View>
       <View style={styles.btnContainer}>
         <View style={styles.row}>
@@ -191,9 +202,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   operation: {
-    fontSize: 50,
+    fontSize: 45,
   },
-  result: { fontSize: 80, height: 110 },
+  result: { fontSize: 60 },
   btnContainer: {
     flex: 5,
     justifyContent: "space-evenly",
