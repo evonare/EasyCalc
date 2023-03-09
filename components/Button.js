@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 const Button = ({
@@ -10,10 +11,7 @@ const Button = ({
 }) => (
   <TouchableOpacity
     style={[styles.container, { backgroundColor: background, ...customClass }]}
-    onPress={() => {
-      playSound();
-      onPress(content);
-    }}
+    onPress={() => onPress(content)}
   >
     <Text style={[styles.btnText, { color: color, fontSize: fontSize }]}>
       {content}
