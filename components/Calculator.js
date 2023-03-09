@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import Button from "./Button";
